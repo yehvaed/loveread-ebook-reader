@@ -1,5 +1,5 @@
 var pkg = require("./package.json");
-var name = pkg.name.split("-")[0];
+var name = pkg.name.replace("-ebook-reader", "");
 
 export default {
   name: name,

@@ -17,6 +17,9 @@ export default {
     fallbackToCacheTimeout: 0,
   },
   assetBundlePatterns: ["**/*"],
+  packagerOpts: {
+    assetExts: ["html"],
+  },
   ios: {
     supportsTablet: true,
   },

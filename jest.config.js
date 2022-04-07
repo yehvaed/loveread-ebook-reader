@@ -1,7 +1,20 @@
+const tsconfig = require("./tsconfig.json");
+const paths = tsconfig.compilerOptions.paths
+
+const aliases = Object.keys(paths).reduce((aliases, key) => {
+  const newKey = `^${key.replace("/*", "(.*)$")}`;
+  const newValue = paths[key][0].replace("/*", "").replace(".", "<rootDir>") + "$1";
+
+  aliases[newKey] = newValue;
+  return aliases;
+}, {});
+
+
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
     testEnvironment: "jsdom",
     preset: "jest-expo",
+    moduleNameMapper: aliases,
     globals: {
       "ts-jest": {
         tsconfig: {
@@ -29,14 +42,15 @@ module.exports = {
       "tsx"
     ],
     transformIgnorePatterns: [
-      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)"
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)"
     ],
     coverageReporters: [
       "json-summary", 
       "text",
       "lcov"
     ],
-    "setupFilesAfterEnv": [
-      "@testing-library/jest-native/extend-expect"
-    ],
+    setupFilesAfterEnv: [
+      "@testing-library/jest-native/extend-expect",
+      "<rootDir>/src/setupTests.ts"
+    ]
 };

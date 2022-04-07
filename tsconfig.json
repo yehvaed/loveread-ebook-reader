@@ -14,7 +14,12 @@
     "typeRoots": [
       "./node_modules/@types"
     ],
-    "strict": true
+    "strict": true,
+    "paths": {
+      "@mockserver/*": ["./src/mocks/*"],
+      "@mockserver": ["./src/mocks"],
+      "@components/*": ["./src/app/components/*"]
+    }
   },
   "extends": "expo/tsconfig.base"
 }

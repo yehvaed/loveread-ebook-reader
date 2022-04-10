@@ -1,11 +1,10 @@
 import { mockServer, rest } from '@mockserver';
-import { render, waitFor } from '@testing-library/react-native';
+import { render, waitFor } from '@tests/utils';
 import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { BooksList } from './BooksList';
 
-const queryClient = new QueryClient()
+
 
 describe('<BooksList />', () => {
   it('should render list of books', async () => {
@@ -19,9 +18,7 @@ describe('<BooksList />', () => {
     )
 
     const { getByText } = render(
-      <QueryClientProvider client={queryClient}>
         <BooksList />
-      </QueryClientProvider>
     )
  
     await waitFor(() =>  {

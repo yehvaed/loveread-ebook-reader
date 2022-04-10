@@ -17,13 +17,12 @@ describe('<BooksList />', () => {
       }),
     )
 
-    const { getByText } = render(
+    const { getAllByTestId } = render(
         <BooksList />
     )
  
     await waitFor(() =>  {
-      expect(getByText("Title")).toBeDefined();
-      expect(getByText("Genre")).toBeDefined();
+      expect(getAllByTestId("book-card")).toHaveLength(1);
     });
   });
 });

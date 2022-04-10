@@ -19,7 +19,8 @@
       "@mockserver/*": ["./src/mocks/*"],
       "@mockserver": ["./src/mocks"],
       "@components/*": ["./src/app/components/*"],
-      "@tests/*": ["./src/tests/*"]
+      "@tests/*": ["./src/tests/*"],
+      "@typings": ["./src/typings.d.ts"]
     }
   },
   "extends": "expo/tsconfig.base"

@@ -1,25 +1,13 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Home } from '@screens/Home';
+import { Screen } from '@utils/navigator';
 import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { Home } from './screens/Home';
-
-const { Navigator, Screen } = createNativeStackNavigator();
-
-const queryClient = new QueryClient()
+import { Screens } from './Screens';
 
 export default function App() {
     return (
-        <QueryClientProvider client={queryClient}>
-            <SafeAreaProvider>
-                <NavigationContainer>
-                    <Navigator >
-                        <Screen name="Home" component={Home} options={{ headerShown: false }} />
-                    </Navigator>
-                </NavigationContainer>
-            </SafeAreaProvider>
-        </QueryClientProvider>
+        <Screens>
+            <Screen name="Home" component={Home} options={{ headerShown: false }} />
+        </Screens>
     );
 }

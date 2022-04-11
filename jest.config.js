@@ -2,8 +2,9 @@ const tsconfig = require("./tsconfig.json");
 const paths = tsconfig.compilerOptions.paths
 
 const aliases = Object.keys(paths).reduce((aliases, key) => {
-  const newKey = `^${key.replace("/*", "(.*)$")}`;
-  const newValue = paths[key][0].replace("/*", "").replace(".", "<rootDir>") + "$1";
+  // FIXME: it looks ugly, maybe additional variable, ifs 
+  const newKey = `^${key.replace("/*", "(.*)")}$`;
+  const newValue = paths[key][0].replace("/*", "").replace(".", "<rootDir>") +  (newKey.replace(/[\^\$]/g, "") != key ? "$1" : "");
 
   aliases[newKey] = newValue;
   return aliases;

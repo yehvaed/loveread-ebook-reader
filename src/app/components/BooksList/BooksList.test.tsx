@@ -1,3 +1,4 @@
+import { BookCardTestId } from '@consts';
 import { mockServer, rest } from '@mockserver';
 import { render, waitFor } from '@tests/utils';
 import React from 'react';
@@ -22,7 +23,7 @@ describe('<BooksList />', () => {
     )
  
     await waitFor(() =>  {
-      expect(getAllByTestId("book-card")).toHaveLength(1);
+      expect(getAllByTestId(BookCardTestId)).toHaveLength(1);
     });
   });
 });

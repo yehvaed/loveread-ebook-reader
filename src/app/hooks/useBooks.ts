@@ -1,75 +1,67 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useInfiniteQuery } from 'react-query';
 
-import { client } from '../utils/clients';
-
-class Page {
-    constructor(private page: string) { }
-
-    public get books() {
-        const titles = [...this.page.matchAll(/<div class="td_top_text"><strong>([^<]+)<\/strong><\/div>/g)].map(title => title[1]);
-        const genres = [...this.page.matchAll(/<p>Жанр ([^<]+)<\/p>/g)].map(title => title[1]);
-
-        const books = [];
-
-        for (let i = 0; i < titles.length; i++) {
-            books.push({
-                title: titles[i],
-                genre: genres[i]
-            })
-        }
-
-        return books;
-    }
-
-    public get nextPage() {
-        return "/" + this.page.match(/href=['"]([^'"]+)['"] title=['"][^'"]+['"]>Вперед/)?.[1]
-    }
-}
+import { client } from '../utils/axios';
 
 export const useBooks = () => {
-    const fetchBooksList = useCallback(async ({ pageParam = "/index_book.php?id_genre=1" }) => {
-        const { data } = await client.get<string>(pageParam);
-        const page = new Page(data);
+  const fetchBooksList = useCallback(
+    async ({ pageParam = "/index_book.php?id_genre=1" }) => {
+      const { data } = await client.get<string>(pageParam);
 
-        return {
-            books: page.books,
-            nextPage: page.nextPage
-        };
-    }, []);
+      const titles = [
+        ...data.matchAll(
+          /<div class="td_top_text"><strong>([^<]+)<\/strong><\/div>/g
+        ),
+      ].map((title) => title[1]);
+      const genres = [...data.matchAll(/<p>Жанр ([^<]+)<\/p>/g)].map(
+        (title) => title[1]
+      );
 
+      const books = [];
 
-    const query = useInfiniteQuery(
-        "booklist",
-        fetchBooksList,
-        {
-            getNextPageParam: (lastPage) => {
-                return lastPage.nextPage;
-            },
-        }
-    );
+      for (let i = 0; i < titles.length; i++) {
+        books.push({
+          title: titles[i],
+          genre: genres[i],
+        });
+      }
 
-    const { isLoading, fetchNextPage, hasNextPage, data } = query;
+      const nextPage =
+        "/" +
+        data.match(/href=['"]([^'"]+)['"] title=['"][^'"]+['"]>Вперед/)?.[1];
 
-    const books = useMemo(() => {
-        return data?.pages.flatMap((d) => d.books) || [];
-    }, [data?.pages.length]);
+      return { books, nextPage };
+    },
+    []
+  );
 
-    const loadMore = useCallback(
-        () => hasNextPage && fetchNextPage(),
-        [hasNextPage]
-    );
+  const query = useInfiniteQuery("booklist", fetchBooksList, {
+    getNextPageParam: (lastPage) => {
+      return lastPage.nextPage;
+    },
+  });
 
-    const counter = useRef(10);
+  const { isLoading, fetchNextPage, hasNextPage, data } = query;
 
-    useEffect(() => {
-        if (!counter.current) return;
-        counter.current -= 1;
-        loadMore();
-    })
+  const books = useMemo(() => {
+    return data?.pages.flatMap((d) => d.books) || [];
+  }, [data?.pages.length]);
 
-    return {
-        books,
-        loadMore
-    }
-}
+  const loadMore = useCallback(
+    () => hasNextPage && fetchNextPage(),
+    [hasNextPage]
+  );
+
+  const counter = useRef(10);
+
+  useEffect(() => {
+    if (!counter.current) return;
+    counter.current -= 1;
+    loadMore();
+  });
+
+  return {
+    books,
+    loadMore,
+  };
+};

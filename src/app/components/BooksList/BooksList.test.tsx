@@ -2,9 +2,13 @@ import { BookCardTestId } from '@consts';
 import { mockServer, rest } from '@mockserver';
 import { render, waitFor } from '@tests/utils';
 import React from 'react';
+import { Text } from 'react-native';
 
 import { BooksList } from './BooksList';
 
+jest.mock("@components/BookCard", () => ({
+  BookCard: () => <Text testID={BookCardTestId}></Text>
+}))
 
 
 describe('<BooksList />', () => {

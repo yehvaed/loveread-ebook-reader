@@ -1,3 +1,4 @@
+import { Book } from '@typings';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useInfiniteQuery } from 'react-query';
 
@@ -8,6 +9,11 @@ export const useBooks = () => {
     async ({ pageParam = "/index_book.php?id_genre=1" }) => {
       const { data } = await client.get<string>(pageParam);
 
+      const ids = [...data.matchAll(/view_global.php\?id=([^#]+)#add_com/g)].map(
+        (id) => parseInt(id[1])
+      );
+      console.log(ids)
+
       const titles = [
         ...data.matchAll(
           /<div class="td_top_text"><strong>([^<]+)<\/strong><\/div>/g
@@ -17,12 +23,14 @@ export const useBooks = () => {
         (title) => title[1]
       );
 
-      const books = [];
+      const books: Book[] = [];
 
       for (let i = 0; i < titles.length; i++) {
         books.push({
+          id: ids[i],
           title: titles[i],
           genre: genres[i],
+          coverUrl: `http://loveread.ec/img/photo_books/${ids[i]}.jpg`
         });
       }
 

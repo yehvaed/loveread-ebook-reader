@@ -9,7 +9,7 @@ export const BooksList = () => {
 
     return <FlatList
         renderItem={({ item }) =>
-            <BookCard  book={item} />
+            <BookCard book={item} />
         }
         keyExtractor={(_, i) => i + ""}
         data={books}

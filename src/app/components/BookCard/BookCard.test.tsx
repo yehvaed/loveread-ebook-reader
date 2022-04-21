@@ -9,8 +9,9 @@ import { BookCard } from './BookCard';
 describe('<BookCard />', () => {
   it('should render books with minimal ammount of details', async () => {
     const book: Book = {
+      id: 0,
       title: "Test Title",
-      genre: "Test Genre"
+      genre: "Test Genre",
     }
 
     const { getByText } = render(

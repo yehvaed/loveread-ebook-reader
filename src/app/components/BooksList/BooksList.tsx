@@ -1,15 +1,20 @@
 import { BookCard } from '@components/BookCard';
+import { BookId } from '@typings';
 import React from 'react';
 import { FlatList } from 'react-native';
 
 import { useBooks } from '../../hooks/useBooks';
 
-export const BooksList = () => {
-   const { books, loadMore } = useBooks();
+interface BooksListProps {
+    onBookPressed?: (bookId: BookId) => void;
+}
 
+export const BooksList = ({ onBookPressed }: BooksListProps) => {
+    const { books, loadMore } = useBooks();
+    
     return <FlatList
         renderItem={({ item }) =>
-            <BookCard book={item} />
+            <BookCard book={item} onPress={onBookPressed} />
         }
         keyExtractor={(_, i) => i + ""}
         data={books}

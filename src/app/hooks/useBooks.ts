@@ -9,10 +9,9 @@ export const useBooks = () => {
     async ({ pageParam = "/index_book.php?id_genre=1" }) => {
       const { data } = await client.get<string>(pageParam);
 
-      const ids = [...data.matchAll(/view_global.php\?id=([^#]+)#add_com/g)].map(
+      const ids = [...data.matchAll(/view_global\.php\?id=([^#]+)#add_com/g)].map(
         (id) => parseInt(id[1])
       );
-      console.log(ids)
 
       const titles = [
         ...data.matchAll(

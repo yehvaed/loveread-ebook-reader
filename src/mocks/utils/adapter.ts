@@ -61,20 +61,30 @@ export const rest = {
 };
 
 export const setupServer = (...handlers: any[]) => {
-  const axiosMockAdapter = new AxiosMockAdapter(client);
+  let axiosMockAdapter: AxiosMockAdapter | undefined;
+
+  const createAdapter = () => {
+    const adapter = new AxiosMockAdapter(client);
+    axiosMockAdapter = adapter;
+
+    return adapter
+  }
+
   return {
     listen() {
-      handlers.forEach((handler) => handler(axiosMockAdapter));
+      const adapter = createAdapter();
+      handlers.forEach((handler) => handler(adapter));
     },
     resetHandlers() {
-      axiosMockAdapter.resetHandlers();
+      axiosMockAdapter?.reset();
     },
     close() {
-      axiosMockAdapter.reset();
+      axiosMockAdapter?.reset();
     },
     use(...handlers: any[]) {
+      const adapter = createAdapter();
       handlers.forEach((handler) => {
-          handler(axiosMockAdapter)
+          handler(adapter)
       });
     },
   };

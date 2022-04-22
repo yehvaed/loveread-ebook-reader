@@ -1,8 +1,7 @@
 import { render } from '@testing-library/react-native';
+import { queryClient } from '@utils/query';
 import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-
-const queryClient = new QueryClient()
+import { QueryClientProvider } from 'react-query';
 
 const AllTheProviders = ({ children }: React.PropsWithChildren<{}>) => {
   return (

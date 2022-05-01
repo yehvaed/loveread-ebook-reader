@@ -1,6 +1,7 @@
 import axios from 'axios';
 import AxiosMockAdapter from 'axios-mock-adapter';
 
+import { normalizeResponse } from '../../app/common/helpers/normalizeResponse';
 import { client } from '../../app/utils/axios';
 
 // TODO: make simillar to msw
@@ -9,7 +10,7 @@ type RouteMatcher = (req: any, res: any, ctx: any) => any;
 const responseModificators = {
   text(response: string) {
     return {
-      data: response.replaceAll("&amp;", "&"),
+      data: normalizeResponse(response),
     };
   },
   delay(timeout: number) {

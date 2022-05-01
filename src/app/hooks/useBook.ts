@@ -11,7 +11,7 @@ export const useBook = (bookId: BookId) => {
 
       const matcher = new RegExp(
         [
-          'MsoNormal>([^<]+)',
+          'MsoNormal["]*>([^<]+)',
           '<div class="take_h1"><b>([^<]*)</b></div>',
           '<div class="take_h1">([^<]*)</div>',
         ].join("|"),
@@ -25,7 +25,7 @@ export const useBook = (bookId: BookId) => {
         .map((line: string) => line.replace(new RegExp("<b>|</b>", "gi"), ""))
         .map((line: string) => {
           return line.replace(
-            new RegExp('MsoNormal>([^<]*)', "gi"),
+            new RegExp('MsoNormal["]*>([^<]*)', "gi"),
             "$1"
           );
         })
@@ -37,11 +37,11 @@ export const useBook = (bookId: BookId) => {
         );
 
       const extracted = data.match(
-        /href=['"]([^'"]+)['"] title=['"][^'"]+['"]>Вперед/
+        /<a href=["]*([^"]+)["]*[^>]+>Вперед/
       )?.[1];
 
       let nextPage = extracted ? `/${extracted}` : undefined;
-      
+   
       return { pages, nextPage };
     },
     []

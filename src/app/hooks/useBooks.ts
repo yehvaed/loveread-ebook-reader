@@ -34,11 +34,10 @@ export const useBooks = () => {
       }
 
       const extracted = data.match(
-        /href=['"]([^'"]+)['"] title=['"][^'"]+['"]>Вперед/
+        /<a href=['"]*([^"']+)['"]*[^<>]+>Вперед/
       )?.[1];
 
       let nextPage = extracted ? `/${extracted}` : undefined;
-      console.log(extracted)
 
       return { books, nextPage };
     },

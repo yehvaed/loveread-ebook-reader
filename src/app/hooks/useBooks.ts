@@ -1,16 +1,16 @@
-import { Book } from '@typings';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { useInfiniteQuery } from 'react-query';
+import { Book } from "@typings";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useInfiniteQuery } from "react-query";
 
-import { client } from '../utils/axios';
+import { client } from "../utils/axios";
 
 export const useBooks = () => {
   const fetchBooksList = useCallback(
     async ({ pageParam = "/index_book.php?id_genre=1" }) => {
       const { data } = await client.get<string>(pageParam);
 
-      const ids = [...data.matchAll(/photo_books\/([^\.]+).jpg/g)].map(
-        (id) => parseInt(id[1])
+      const ids = [...data.matchAll(/photo_books\/([^\.]+).jpg/g)].map((id) =>
+        parseInt(id[1])
       );
 
       const titles = [
@@ -29,7 +29,7 @@ export const useBooks = () => {
           id: ids[i],
           title: titles[i],
           genre: genres[i],
-          coverUrl: `http://loveread.ec/img/photo_books/${ids[i]}.jpg`
+          coverUrl: `http://loveread.ec/img/photo_books/${ids[i]}.jpg`,
         });
       }
 

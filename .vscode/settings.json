@@ -1,11 +1,11 @@
 {
-    "files.exclude": {
-        "**/.git": true,
-        "**/node_modules": true,
-        "**/yarn-error.log": true,
-        "**/.expo": true
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": false
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/yarn-error.log": true,
+    "**/.expo": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false
 }

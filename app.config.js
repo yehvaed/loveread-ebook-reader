@@ -33,6 +33,6 @@ export default {
     favicon: "./assets/images/favicon.png",
   },
   extra: {
-    isDevelopment: process.env.NODE_ENV === 'development',
+    isDevelopment: process.env.NODE_ENV === "development",
   },
 };

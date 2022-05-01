@@ -1,16 +1,16 @@
-import { getAsset } from '../assets';
-import { rest } from './adapter';
+import { getAsset } from "../assets";
+import { rest } from "./adapter";
 
 export const handlers = [
   rest.get("http://loveread.ec/index_book.php", async (req, res, ctx) => {
-    const books = await getAsset('books');
+    const books = await getAsset("books");
     return res(ctx.delay(350), ctx.text(await books));
   }),
   rest.get("http://loveread.ec/read_book.php", async (req, res, ctx) => {
     const { id, p } = req.query;
     const currentPageNumber = parseInt(p);
 
-    let bookContent = await getAsset('book');
+    let bookContent = await getAsset("book");
     let nextPage;
 
     if (currentPageNumber <= 10) {

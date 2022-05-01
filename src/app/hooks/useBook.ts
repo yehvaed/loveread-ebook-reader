@@ -1,8 +1,8 @@
-import { BookId } from '@typings';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { useInfiniteQuery } from 'react-query';
+import { BookId } from "@typings";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useInfiniteQuery } from "react-query";
 
-import { client } from '../utils/axios';
+import { client } from "../utils/axios";
 
 export const useBook = (bookId: BookId) => {
   const fetchPages = useCallback(
@@ -24,10 +24,7 @@ export const useBook = (bookId: BookId) => {
         .map((line: string) => line.replace(/&#8210;/g, "-"))
         .map((line: string) => line.replace(new RegExp("<b>|</b>", "gi"), ""))
         .map((line: string) => {
-          return line.replace(
-            new RegExp('MsoNormal["]*>([^<]*)', "gi"),
-            "$1"
-          );
+          return line.replace(new RegExp('MsoNormal["]*>([^<]*)', "gi"), "$1");
         })
         .map((line: string) =>
           line.replace(
@@ -36,12 +33,10 @@ export const useBook = (bookId: BookId) => {
           )
         );
 
-      const extracted = data.match(
-        /<a href=["]*([^"]+)["]*[^>]+>Вперед/
-      )?.[1];
+      const extracted = data.match(/<a href=["]*([^"]+)["]*[^>]+>Вперед/)?.[1];
 
       let nextPage = extracted ? `/${extracted}` : undefined;
-   
+
       return { pages, nextPage };
     },
     []

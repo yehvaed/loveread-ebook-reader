@@ -26,6 +26,6 @@ jobs:
       - name: Run Issue Bot
         uses: derjuulsn/todo-issue@main
         with:
-          excludePattern: '^(node_modules/)'
+          excludePattern: "^(node_modules/)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

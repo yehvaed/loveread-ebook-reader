@@ -1,5 +1,5 @@
-import { Asset } from 'expo-asset';
-import * as FileSystem from 'expo-file-system';
+import { Asset } from "expo-asset";
+import * as FileSystem from "expo-file-system";
 
 const loadAsset = async (virtualAssetModule: number | string) => {
   const fromModule = Asset.fromModule(virtualAssetModule);
@@ -13,10 +13,10 @@ const loadAsset = async (virtualAssetModule: number | string) => {
 };
 
 const assets = {
-    books: loadAsset(require("../assets/books.mock.html")),
-    book: loadAsset(require("../assets/book.mock.html"))
-}
+  books: loadAsset(require("../assets/books.mock.html")),
+  book: loadAsset(require("../assets/book.mock.html")),
+};
 
 export const getAsset = (assetKey: keyof typeof assets) => {
-    return assets[assetKey];
-}
+  return assets[assetKey];
+};

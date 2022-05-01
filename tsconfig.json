@@ -16,11 +16,11 @@
     ],
     "strict": true,
     "paths": {
-      "@mockserver/*": ["./src/mocks/*"],
-      "@mockserver": ["./src/mocks"],
+      "@mockserver/*": ["./src/shared/mocks/*"],
+      "@mockserver": ["./src/shared/mocks"],
       "@components/*": ["./src/app/components/*"],
       "@screens/*": ["./src/app/screens/*"],
-      "@tests/*": ["./src/tests/*"],
+      "@tests": ["./src/tests"],
       "@typings": ["./src/typings.d.ts"],
       "@consts": ["./src/consts.ts"],
       "@utils/*": ["./src/app/utils/*"]

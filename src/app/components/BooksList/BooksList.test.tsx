@@ -1,7 +1,7 @@
 import { BookCardProps } from '@components/BookCard';
 import { BookCardTestId } from '@consts';
 import { mockServer, rest } from '@mockserver';
-import { act, fireEvent, render, waitFor } from '@tests/utils';
+import { act, fireEvent, render, waitFor } from '@tests';
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 

@@ -1,11 +1,9 @@
 import { BookCardTestId } from '@consts';
-import { fireEvent, render } from '@tests/utils';
+import { fireEvent, render } from '@tests';
 import { Book } from '@typings';
 import React from 'react';
 
 import { BookCard } from './BookCard';
-
-
 
 describe('<BookCard />', () => {
   const book: Book = {

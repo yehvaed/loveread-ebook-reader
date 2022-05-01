@@ -9,7 +9,7 @@ export const useBooks = () => {
     async ({ pageParam = "/index_book.php?id_genre=1" }) => {
       const { data } = await client.get<string>(pageParam);
 
-      const ids = [...data.matchAll(/view_global\.php\?id=([^#]+)#add_com/g)].map(
+      const ids = [...data.matchAll(/photo_books\/([^\.]+).jpg/g)].map(
         (id) => parseInt(id[1])
       );
 
@@ -33,9 +33,13 @@ export const useBooks = () => {
         });
       }
 
-      const nextPage =
-        "/" +
-        data.match(/href=['"]([^'"]+)['"] title=['"][^'"]+['"]>Вперед/)?.[1];
+      console.log(books)
+
+      const extracted = data.match(
+        /href=['"]([^'"]+)['"] title=['"][^'"]+['"]>Вперед/
+      )?.[1];
+
+      let nextPage = extracted ? `/${extracted}` : undefined;
 
       return { books, nextPage };
     },
@@ -52,14 +56,14 @@ export const useBooks = () => {
 
   const books = useMemo(() => {
     return data?.pages.flatMap((d) => d.books) || [];
-  }, [data?.pages.length]);
+  }, [data]);
 
   const loadMore = useCallback(
     () => hasNextPage && fetchNextPage(),
     [hasNextPage]
   );
 
-  const counter = useRef(10);
+  const counter = useRef(1);
 
   useEffect(() => {
     if (!counter.current) return;

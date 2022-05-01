@@ -9,7 +9,7 @@ import { QueryClientProvider } from 'react-query';
 export const Screens = ({ children }: React.PropsWithChildren<{}>) => (
     <QueryClientProvider client={queryClient}>
         <SafeAreaProvider>
-            <NavigationContainer>
+            <NavigationContainer >
                 <Navigator >
                     {children}
                 </Navigator>

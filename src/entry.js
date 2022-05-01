@@ -1,10 +1,11 @@
+import { isDevelopment } from '@consts';
 import { registerRootComponent } from 'expo';
 
 import App from './app/App';
 
-if (process.env.NODE_ENV === 'development') {
+if (isDevelopment) {
   require('react-native-url-polyfill/auto')
-  const { mockServer } = require('./mocks')
+  const { mockServer } = require('./shared/mocks')
   mockServer.listen()
 }
 

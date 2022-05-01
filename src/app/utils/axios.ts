@@ -10,7 +10,11 @@ client.interceptors.response.use((res) => {
   const convertedResponse = convertWindows1252toUTF16(res.data)
     .replace(/[\n\t]*/g, "")
     .replace(/[ ]+/g, " ")
-    .replace("&amp;", "&");
+    .replaceAll("&amp;", "&")
+    .replaceAll("<i>", "")
+    .replaceAll("</i>", "")
+    .replaceAll("<b>", "")
+    .replaceAll("</b>", "")
   res.data = convertedResponse;
   return res;
 });

@@ -32,4 +32,7 @@ export default {
   web: {
     favicon: "./assets/images/favicon.png",
   },
+  extra: {
+    isDevelopment: process.env.NODE_ENV === 'development',
+  },
 };

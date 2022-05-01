@@ -45,8 +45,9 @@ export const BookCard = ({ book: { id, title, genre, coverUrl }, onPress }: Book
                     justifyContent: 'center'
                 }}>
                     <Text style={{
-                        fontSize: 14,
-                        fontWeight: 'bold'
+                        fontSize: 17,
+                        fontWeight: 'bold',
+                        fontStyle: 'italic',
                     }}>{title}</Text>
                     <Text>{genre}</Text>
                 </View>

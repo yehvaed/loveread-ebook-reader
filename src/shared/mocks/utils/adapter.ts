@@ -1,7 +1,7 @@
 import axios from 'axios';
 import AxiosMockAdapter from 'axios-mock-adapter';
 
-import { client } from '../../app/utils/axios';
+import { client } from '../../../app/utils/axios';
 
 // TODO: make simillar to msw
 type RouteMatcher = (req: any, res: any, ctx: any) => any;
@@ -9,7 +9,7 @@ type RouteMatcher = (req: any, res: any, ctx: any) => any;
 const responseModificators = {
   text(response: string) {
     return {
-      data: response,
+      data: response.replaceAll("&amp;", "&"),
     };
   },
   delay(timeout: number) {
@@ -44,9 +44,11 @@ export const rest = {
 
       axios.onGet(pattern).reply((config) => {
         const [path, query] = config.url?.split("?")!;
-        const params = query.split("&").reduce((p = {}, paramWithValue) => {
+        const params = query.split("&").reduce((p, paramWithValue) => {
           const [key, value] = paramWithValue.split("=");
           p[key] = value;
+
+          return p;
         }, {} as any);
 
         const context = {
@@ -65,6 +67,7 @@ export const setupServer = (...handlers: any[]) => {
 
   const createAdapter = () => {
     const adapter = new AxiosMockAdapter(client);
+    adapter.originalAdapter.
     axiosMockAdapter = adapter;
 
     return adapter

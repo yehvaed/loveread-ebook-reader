@@ -1,7 +1,7 @@
 import axios from 'axios';
 import AxiosMockAdapter from 'axios-mock-adapter';
 
-import { client } from '../../../app/utils/axios';
+import { client } from '../../app/utils/axios';
 
 // TODO: make simillar to msw
 type RouteMatcher = (req: any, res: any, ctx: any) => any;
@@ -67,7 +67,6 @@ export const setupServer = (...handlers: any[]) => {
 
   const createAdapter = () => {
     const adapter = new AxiosMockAdapter(client);
-    adapter.originalAdapter.
     axiosMockAdapter = adapter;
 
     return adapter

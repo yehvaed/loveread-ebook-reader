@@ -15,6 +15,7 @@ client.interceptors.response.use((res) => {
     .replaceAll("</i>", "")
     .replaceAll("<b>", "")
     .replaceAll("</b>", "")
+    .replace(/(\r\n|\n|\r)/gm, "")
   res.data = convertedResponse;
   return res;
 });

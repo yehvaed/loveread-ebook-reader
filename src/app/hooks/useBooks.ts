@@ -1,10 +1,12 @@
 import { Book } from "@typings";
 import { useCallback, useEffect, useMemo, useRef } from "react";
-import { useInfiniteQuery } from "react-query";
+import { useInfiniteQuery, useQueryClient } from "react-query";
 
 import { client } from "../utils/axios";
 
 export const useBooks = () => {
+  const queryClient = useQueryClient();
+
   const fetchBooksList = useCallback(
     async ({ pageParam = "/index_book.php?id_genre=1" }) => {
       const { data } = await client.get<string>(pageParam);
@@ -50,7 +52,7 @@ export const useBooks = () => {
     },
   });
 
-  const { isLoading, fetchNextPage, hasNextPage, data } = query;
+  const { isFetching, fetchNextPage, hasNextPage, data } = query;
 
   const books = useMemo(() => {
     return data?.pages.flatMap((d) => d.books) || [];
@@ -70,6 +72,8 @@ export const useBooks = () => {
   });
 
   return {
+    invalidate: () => queryClient.invalidateQueries("booklist"),
+    isLoading: isFetching,
     books,
     loadMore,
   };

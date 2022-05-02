@@ -10,7 +10,7 @@ interface BooksListProps {
 }
 
 export const BooksList = ({ onBookPressed }: BooksListProps) => {
-  const { books, loadMore } = useBooks();
+  const { isLoading, books, loadMore, invalidate } = useBooks();
 
   return (
     <FlatList
@@ -21,6 +21,8 @@ export const BooksList = ({ onBookPressed }: BooksListProps) => {
       data={books}
       onEndReachedThreshold={0.9}
       onEndReached={loadMore}
+      refreshing={isLoading}
+      onRefresh={() => invalidate()}
     />
   );
 };

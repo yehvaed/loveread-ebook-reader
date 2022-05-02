@@ -1,11 +1,11 @@
-import { BookCardProps } from "@components/BookCard";
-import { BookCardTestId } from "@consts";
-import { mockServer, rest } from "@mockserver";
-import { act, fireEvent, render, waitFor } from "@tests";
-import React from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { BookCardProps } from '@components/BookCard';
+import { BookCardTestId } from '@consts';
+import { mockServer, rest } from '@mockserver';
+import { act, fireEvent, render, waitFor } from '@tests';
+import React from 'react';
+import { Text, TouchableOpacity } from 'react-native';
 
-import { BooksList } from "./BooksList";
+import { BooksList } from './BooksList';
 
 jest.mock("@components/BookCard", () => ({
   BookCard: ({ book, onPress }: BookCardProps) => (
@@ -46,8 +46,8 @@ describe("<BooksList />", () => {
         return res(
           ctx.text(`
         <div class="td_top_text"><strong>Title<\/strong><\/div>
-        <a href="view_global.php?id=0#add_com" \/>
         <p>Жанр Genre<\/p>
+        <img src="img/photo_books/0.jpg" \/>
         `)
         );
       })
@@ -60,14 +60,16 @@ describe("<BooksList />", () => {
     );
 
     await waitFor(() => {
-      const elements = getAllByTestId(BookCardTestId);
-      const randomElements =
-        elements[Math.floor(Math.random() * 100) % elements.length];
+      expect(getAllByTestId(BookCardTestId)).toHaveLength(1);
+    });
 
-      act(() => {
-        fireEvent.press(randomElements);
-      });
+    const elements = getAllByTestId(BookCardTestId);
 
+    act(() => {
+      fireEvent.press(elements[0]);
+    });
+
+    await waitFor(() => {
       expect(handlePress).toBeCalledTimes(1);
       expect(handlePress).toBeCalledWith(0);
     });

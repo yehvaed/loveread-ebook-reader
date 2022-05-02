@@ -15,7 +15,9 @@
       "@mockserver": ["./src/shared/mocks"],
       "@components/*": ["./src/app/components/*"],
       "@screens/*": ["./src/app/screens/*"],
-      "@tests": ["./src/tests"],
+      "@tests": [
+        "./src/shared/tests.tsx"
+      ],
       "@typings": ["./src/typings.d.ts"],
       "@consts": ["./src/consts.ts"],
       "@utils/*": ["./src/app/utils/*"]

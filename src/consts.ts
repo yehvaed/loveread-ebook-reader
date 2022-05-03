@@ -1,8 +1,9 @@
 import Constants from "expo-constants";
 
-import appConfig from "../app.config";
+import { constants } from "../app.config";
 
-type Constants = typeof appConfig.extra;
+type Constants = typeof constants;
+
 export const { isDevelopment } = Constants.manifest!.extra as Constants;
 
 // test ids

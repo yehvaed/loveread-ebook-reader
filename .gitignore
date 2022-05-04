@@ -10,6 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 .tmp/
+coverage/
 
 # macOS
 .DS_Store

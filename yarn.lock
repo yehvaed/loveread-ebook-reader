@@ -5938,6 +5938,13 @@ jest-coverage-badges@1.1.2:
   dependencies:
     mkdirp "0.5.1"
 
+jest-coverage-thresholds-bumper@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/jest-coverage-thresholds-bumper/-/jest-coverage-thresholds-bumper-1.1.0.tgz#caca024458079f91febdb4d53cd01f6d84674f65"
+  integrity sha512-tdr2vpSFo2gPZ68oM14uq2ShfO9qY9WKo113EAK2xBT9sXW9gaMNQlr1Vo//bF6Dr6K9t144JPGnwJPRxtJlxA==
+  dependencies:
+    yargs "^17.3.1"
+
 jest-diff@^24.0.0, jest-diff@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-diff/-/jest-diff-24.9.0.tgz#931b7d0d5778a1baf7452cb816e325e3724055da"

@@ -29,6 +29,14 @@ module.exports = {
     "^.+\\.tsx?$": "ts-jest",
   },
   testMatch: ["**/?(*.)+(spec|test).ts?(x)"],
+  coverageThreshold: {
+    global: {
+      lines: 56.82,
+      statements: 56.85,
+      branches: 36.36,
+      functions: 55.22,
+    },
+  },
   collectCoverageFrom: [
     "**/*.{ts,tsx}",
     "!**/coverage/**",

@@ -5,7 +5,8 @@
   "scripts": {
     "format": "prettier --write .",
     "start": "cross-env NODE_ENV=development expo start",
-    "test": "jest",
+    "test": "jest --coverage",
+    "posttest": "jest-coverage-thresholds-bumper",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -56,6 +57,7 @@
     "husky": "^7.0.4",
     "jest": "^26.6.3",
     "jest-coverage-badges": "1.1.2",
+    "jest-coverage-thresholds-bumper": "^1.1.0",
     "jest-expo": "^44.0.0",
     "lint-staged": "^12.4.1",
     "msw": "^0.39.2",

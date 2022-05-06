@@ -24,10 +24,10 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: yarn install
+        run: make install
 
       - name: 🧪 Run tests
-        run: yarn test
+        run: make test
 
       - name: 🚀 Publish app
-        run: expo publish --non-interactive
+        run: make publish

@@ -14,6 +14,7 @@ export const BooksList = ({ onBookPressed }: BooksListProps) => {
 
   return (
     <FlatList
+      testID="books-list"
       renderItem={({ item }) => (
         <BookCard book={item} onPress={onBookPressed} />
       )}

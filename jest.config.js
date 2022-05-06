@@ -31,14 +31,20 @@ module.exports = {
   testMatch: ["**/?(*.)+(spec|test).ts?(x)"],
   coverageThreshold: {
     global: {
-      lines: 56.82,
-      statements: 56.85,
-      branches: 36.36,
-      functions: 55.22,
+      lines: 58.63,
+      statements: 58.17,
+      branches: 40,
+      functions: 56.66,
     },
   },
   collectCoverageFrom: [
     "**/*.{ts,tsx}",
+    // don't collect coverage from e2e tests
+    "!**/*.e2e.{ts,tsx}",
+    "!**/setupTests.ts",
+    "!**/index.ts",
+    "!**/mocks/{handlers,native}.ts",
+    "!**/app.config.ts",
     "!**/coverage/**",
     "!**/node_modules/**",
     "!**/babel.config.js",

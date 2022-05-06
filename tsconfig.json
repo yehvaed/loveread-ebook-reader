@@ -21,7 +21,12 @@
       "@typings": ["./src/typings.d.ts"],
       "@consts": ["./src/consts.ts"],
       "@utils/*": ["./src/app/utils/*"]
-    }
+    },
+    "types": [
+      "jest",
+      "jasmine",
+      "node"
+    ]
   },
   "extends": "expo/tsconfig.base"
 }

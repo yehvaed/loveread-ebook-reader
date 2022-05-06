@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=development expo start",
     "test": "jest --coverage",
     "posttest": "jest-it-up",
-    "e2e": "detox test",
+    "e2e": "concurrently --kill-others --success=first \"yarn start --ios \"   \"detox test --loglevel error\"",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -53,6 +53,7 @@
     "@types/react-query": "^1.2.9",
     "@types/react-test-renderer": "16.9.4",
     "axios-mock-adapter": "^1.20.0",
+    "concurrently": "^7.1.0",
     "cross-env": "^7.0.3",
     "detox": "^19.6.7",
     "detox-expo-helpers": "github:fschoenfeldt/detox-expo-helpers#0.7.1",

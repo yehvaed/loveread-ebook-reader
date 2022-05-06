@@ -17,9 +17,10 @@
         "packagerOpts": {
             "assetExts": [
                 "html"
-            ],
+            ]
         },
         "ios": {
+            "bundleIdentifier": "com.yehvaed.loveread",
             "supportsTablet": true
         },
         "android": {

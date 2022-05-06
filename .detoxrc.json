@@ -2,13 +2,24 @@
   "testRunner": "jest",
   "runnerConfig": "./jest-e2e.config.js",
   "skipLegacyWorkersInjection": true,
-  "configurations": {
-    "ios.sim": {
-      "binaryPath": "./.tmp/bin/Exponent.app",
-      "type": "ios.simulator",
-      "name": "iPhone 11"
+  "apps": {
+    "ios": {
+      "type": "ios.app",
+      "binaryPath": ".tmp/bin/Exponent.app"
     }
   },
-  "test-runner": "jest",
-  "specs": ""
+  "devices": {
+    "simulator": {
+      "type": "ios.simulator",
+      "device": {
+        "type": "iPhone 11"
+      }
+    }
+  },
+  "configurations": {
+    "ios": {
+      "device": "simulator",
+      "app": "ios"
+    }
+  }
 }

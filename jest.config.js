@@ -31,8 +31,8 @@ module.exports = {
   testMatch: ["**/?(*.)+(spec|test).ts?(x)"],
   coverageThreshold: {
     global: {
-      lines: 58.63,
-      statements: 58.17,
+      lines: 58.33,
+      statements: 57.89,
       branches: 40,
       functions: 56.66,
     },

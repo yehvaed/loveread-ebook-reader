@@ -15,9 +15,7 @@
             "**/*"
         ],
         "packagerOpts": {
-            "assetExts": [
-                "html"
-            ]
+            "assetExts": []
         },
         "ios": {
             "bundleIdentifier": "com.yehvaed.loveread",

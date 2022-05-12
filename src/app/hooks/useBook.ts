@@ -33,10 +33,12 @@ export const useBook = (bookId: BookId) => {
           )
         );
 
-      const extracted = data.match(/<a href=["]*([^"]+)["]*[^>]+>Вперед/)?.[1];
+      const extracted = data.match(
+        /<a href=['"]*([^"']+)['"]*[^<>]+>Вперед/
+      )?.[1];
 
       let nextPage = extracted ? `/${extracted}` : undefined;
-
+      console.log(nextPage);
       return { pages, nextPage };
     },
     []

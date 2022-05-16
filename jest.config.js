@@ -32,15 +32,17 @@ module.exports = {
   coverageThreshold: {
     global: {
       lines: 59,
-      statements: 58.25,
-      branches: 40,
-      functions: 56.25,
+      statements: 58.71,
+      branches: 50,
+      functions: 58.46,
     },
   },
   collectCoverageFrom: [
     "**/*.{ts,tsx}",
     // don't collect coverage from e2e tests
     "!**/*.e2e.{ts,tsx}",
+    // don't collect coverage from unit tests
+    "!**/*.test.{ts,tsx}",
     "!**/setupTests.ts",
     "!**/index.ts",
     "!**/mocks/{handlers,native}.ts",

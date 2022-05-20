@@ -1,8 +1,7 @@
 import { BookId } from "@typings";
+import { client } from "@utils/axios";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useInfiniteQuery } from "react-query";
-
-import { client } from "../utils/axios";
 
 const getBookContent = (page: string) => {
   const matcher = new RegExp(

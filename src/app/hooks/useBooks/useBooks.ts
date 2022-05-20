@@ -1,8 +1,7 @@
 import { Book } from "@typings";
+import { client } from "@utils/axios";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useInfiniteQuery, useQueryClient } from "react-query";
-
-import { client } from "../utils/axios";
 
 const getBooks = (page: string): Book[] => {
   const ids = [...page.matchAll(/photo_books\/([^\.]+).jpg/g)].map((id) =>
@@ -68,14 +67,6 @@ export const useBooks = () => {
     () => hasNextPage && fetchNextPage(),
     [hasNextPage]
   );
-
-  const counter = useRef(1);
-
-  useEffect(() => {
-    if (!counter.current) return;
-    counter.current -= 1;
-    loadMore();
-  });
 
   const refresh = () => queryClient.invalidateQueries("booklist");
 

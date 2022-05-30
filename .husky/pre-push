@@ -1,17 +1,37 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm test
 
-contentBeforeCoverageBump=$(git diff jest.config.js);
-npx jest-it-up
-contentAfterCoverageBump=$(git diff  jest.config.js);
+function bumpThresholdCoverage {
+    local coverageBumperOutput=$(npx jest-it-up --dry-run)
+    local canWeUpdateCoverage=$(echo "${coverageBumperOutput}" | grep "improved code coverage");
 
-if [[ "${contentBeforeCoverageBump}" != "${contentAfterCoverageBump}" ]]; then
-    echo "Save coverage threashold"
-    git add "jest.config.js";
-    git commit -m "chore: bump coverage threashold" --no-verify;
+    if [[ -n "${canWeUpdateCoverage} " ]]; then 
+        echo
+        npx jest-it-up \
+            | grep -v "record the changes" \
+            | grep -v "improved code coverage";
+
+        
+        git add "jest.config.js";
+        git commit -m "chore: bump coverage threashold" --no-verify;     
+        echo "Your changes have improved code coverage. Nice work! ❤️"
+
+        echo 
+        git add "jest.config.js";
+        git commit -m "chore: bump coverage threashold" --no-verify;    
+        echo "Automatically persisted in git history🤖"
+    fi
+}
+
+if [[ $(git diff --stat) != '' ]]; then
+    echo "I see that working directory is dirty so, I will abort futher actions 😞"
+    echo 
+    exit 127;
 fi
+
+npm test
+bumpThresholdCoverage
 
 
 

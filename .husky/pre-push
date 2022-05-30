@@ -11,10 +11,7 @@ function bumpThresholdCoverage {
         npx jest-it-up \
             | grep -v "record the changes" \
             | grep -v "improved code coverage";
-
-        
-        git add "jest.config.js";
-        git commit -m "chore: bump coverage threashold" --no-verify;     
+   
         echo "Your changes have improved code coverage. Nice work! ❤️"
 
         echo 

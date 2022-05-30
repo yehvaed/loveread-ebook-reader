@@ -2,3 +2,16 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npm test
+
+contentBeforeCoverageBump=$(git diff jest.config.js);
+npx jest-it-up
+contentAfterCoverageBump=$(git diff  jest.config.js);
+
+if [[ "${contentBeforeCoverageBump}" != "${contentAfterCoverageBump}" ]]; then
+    echo "Save coverage threashold"
+    git add "jest.config.js";
+    git commit -m "chore: bump coverage threashold" --no-verify;
+fi
+
+
+

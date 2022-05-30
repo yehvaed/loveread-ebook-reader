@@ -6,7 +6,7 @@ function bumpThresholdCoverage {
     local coverageBumperOutput=$(npx jest-it-up --dry-run)
     local canWeUpdateCoverage=$(echo "${coverageBumperOutput}" | grep "improved code coverage");
 
-    if [[ -n "${canWeUpdateCoverage} " ]]; then 
+    if [[ -n "${canWeUpdateCoverage}" ]]; then 
         echo
         npx jest-it-up \
             | grep -v "record the changes" \

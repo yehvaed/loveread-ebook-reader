@@ -4,7 +4,7 @@ import { queryClient } from "@utils/query";
 import React from "react";
 import { QueryClientProvider } from "react-query";
 
-const AllTheProviders = ({ children }: React.PropsWithChildren<{}>) => {
+const AllTheProviders = ({ children }: React.PropsWithChildren<object>) => {
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );

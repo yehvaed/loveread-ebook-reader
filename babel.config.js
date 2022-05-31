@@ -20,7 +20,7 @@ module.exports = function (api) {
         "module-resolver",
         {
           alias: aliases,
-          extensions: extensions,
+          extensions,
         },
       ],
     ],

@@ -1,6 +1,6 @@
 export function convertWindows1252toUTF16(s: string) {
   const codes = win1252toUTF16table;
-  for (var i = 0; i < win1252toUTF16table.length; i++) {
+  for (let i = 0; i < win1252toUTF16table.length; i++) {
     if (s.includes(codes[i]["win1252"])) {
       s = s.replaceAll(codes[i]["win1252"], codes[i]["utf16"]);
     }

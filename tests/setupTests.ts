@@ -1,10 +1,9 @@
 import { cleanup, init } from "detox";
 
+const { reloadApp } = require("detox-expo-helpers");
 const adapter = require("detox/runners/jest/adapter");
 
 const config = require("../.detoxrc.json");
-
-const { reloadApp } = require("detox-expo-helpers");
 
 jest.setTimeout(100000);
 jasmine.getEnv().addReporter(adapter);

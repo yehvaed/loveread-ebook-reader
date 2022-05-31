@@ -10,7 +10,7 @@ export const handlers = [
     const { id, p } = req.query;
     const currentPageNumber = parseInt(p);
 
-    let bookContent = await getAsset("book");
+    const bookContent = await getAsset("book");
     let nextPage;
 
     if (currentPageNumber <= 10) {

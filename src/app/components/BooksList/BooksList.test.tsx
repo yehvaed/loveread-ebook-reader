@@ -1,11 +1,11 @@
-import { BookCardProps } from '@components/BookCard';
-import { BookCardTestId } from '@consts';
-import { mockServer, rest } from '@mockserver';
-import { act, fireEvent, render, waitFor } from '@tests';
-import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { BookCardProps } from "@components/BookCard";
+import { BookCardTestId } from "@consts";
+import { mockServer, rest } from "@mockserver";
+import { act, fireEvent, render, waitFor } from "@tests";
+import React from "react";
+import { Text, TouchableOpacity } from "react-native";
 
-import { BooksList } from './BooksList';
+import { BooksList } from "./BooksList";
 
 jest.mock("@components/BookCard", () => ({
   BookCard: ({ book, onPress }: BookCardProps) => (

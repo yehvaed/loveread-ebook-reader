@@ -5,7 +5,7 @@ import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { QueryClientProvider } from "react-query";
 
-export const Screens = ({ children }: React.PropsWithChildren<{}>) => (
+export const Screens = ({ children }: React.PropsWithChildren<object>) => (
   <QueryClientProvider client={queryClient}>
     <SafeAreaProvider>
       <NavigationContainer>

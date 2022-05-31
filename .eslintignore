@@ -1,0 +1,5 @@
+# generated apps
+coverage/
+
+# dependecies
+node_modules/

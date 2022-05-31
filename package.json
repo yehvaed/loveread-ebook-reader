@@ -59,7 +59,7 @@
     "detox": "^19.6.7",
     "detox-expo-helpers": "github:fschoenfeldt/detox-expo-helpers#0.7.1",
     "eslint": "^8.14.0",
-    "eslint-config-expo": "^6.0.0",
+    "eslint-config-universe": "^11.0.0",
     "expo-detox-hook": "^1.0.10",
     "faker": "^5.1.0",
     "husky": "^7.0.4",

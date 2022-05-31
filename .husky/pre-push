@@ -7,28 +7,30 @@ function shouldIncreaseCoverage {
     local canWeUpdateCoverage=$(echo "${coverageBumperOutput}" | grep "improved code coverage");
 
     if [[ -n "${canWeUpdateCoverage}" ]]; then 
-        return 127
+        return 0
     fi
+
+    return 128
 }
 
 function bumpCoverage {
-       echo
+        echo
         npx jest-it-up \
             | grep -v "record the changes" \
             | grep -v "improved code coverage";
-   
-        echo "Your changes have improved code coverage. Nice work! ❤️"
 
         echo 
         git add "jest.config.js";
         git commit -m "chore: bump coverage threashold" --no-verify;    
         echo
+   
+        echo "Your changes have improved code coverage. Nice work! ❤️"
 }
 
 if [[ $(git diff --stat) != '' ]]; then
     echo "I see that working directory is dirty so, I will abort futher actions 😞"
     echo 
-    exit 127;
+    # exit 127;
 fi
 
 npm test

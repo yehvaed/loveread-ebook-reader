@@ -2,12 +2,17 @@
 . "$(dirname "$0")/_/husky.sh"
 
 
-function bumpThresholdCoverage {
+function shouldIncreaseCoverage {
     local coverageBumperOutput=$(npx jest-it-up --dry-run)
     local canWeUpdateCoverage=$(echo "${coverageBumperOutput}" | grep "improved code coverage");
 
     if [[ -n "${canWeUpdateCoverage}" ]]; then 
-        echo
+        return 127
+    fi
+}
+
+function bumpCoverage {
+       echo
         npx jest-it-up \
             | grep -v "record the changes" \
             | grep -v "improved code coverage";
@@ -17,8 +22,7 @@ function bumpThresholdCoverage {
         echo 
         git add "jest.config.js";
         git commit -m "chore: bump coverage threashold" --no-verify;    
-        echo "Automatically persisted in git history🤖"
-    fi
+        echo
 }
 
 if [[ $(git diff --stat) != '' ]]; then
@@ -28,7 +32,10 @@ if [[ $(git diff --stat) != '' ]]; then
 fi
 
 npm test
-bumpThresholdCoverage
+
+if shouldIncreaseCoverage; then
+    bumpCoverage
+fi
 
 
 

@@ -25,7 +25,6 @@ function bumpCoverage {
         echo
    
         echo "Your changes have improved code coverage. Nice work! ❤️"
-        echo "------------------------------------------------------"
 }
 
 if [[ $(git diff --stat) != '' ]]; then
@@ -39,6 +38,7 @@ npm test
 if shouldIncreaseCoverage; then
     bumpCoverage
 fi
+echo "------------------------------------------------------"
 
 
 

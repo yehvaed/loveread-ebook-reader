@@ -39,16 +39,17 @@ export const BookCard: FC<BookCardProps> = ({ id, onPress }) => {
 
   return (
     <TouchableOpacity testID={TestId.BookCard} onPress={handlerPress}>
-      <View style={{ flexDirection: "row" }}>
+      <View style={{ flexDirection: "row", paddingLeft: 10 }}>
         <View
           style={{
             ...shadowBox,
-            flex: 0.8,
+            flex: 1,
           }}
         >
           <Image
             style={{
-              height: 200,
+              height: 244,
+              width: 150,
               margin: 10,
               borderRadius: 5,
             }}
@@ -63,14 +64,20 @@ export const BookCard: FC<BookCardProps> = ({ id, onPress }) => {
         >
           <Text
             style={{
-              fontSize: 17,
+              fontSize: 25,
               fontWeight: "bold",
               fontStyle: "italic",
             }}
           >
             {title}
           </Text>
-          <Text>{genre}</Text>
+          <Text
+            style={{
+              padding: 1,
+            }}
+          >
+            {genre}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>

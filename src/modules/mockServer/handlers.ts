@@ -30,8 +30,8 @@ export const handlers = [
     const content = await details;
 
     const modifiedContent = content
-      .replaceAll("{{ title }}", `title ${id}`)
-      .replaceAll("{{ genre }}", `genre ${id}`);
+      .replaceAll("{{ title }}", `Title ${id}`)
+      .replaceAll("{{ genre }}", `Genre ${id}`);
 
     return res(ctx.delay(350), ctx.text(modifiedContent));
   }),

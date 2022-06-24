@@ -35,7 +35,7 @@ export default function App() {
         <Screen
           name="reader"
           component={ReaderScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: false, headerBackVisible: false }}
         />
       </Navigator>
     </Container>

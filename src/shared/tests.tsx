@@ -29,9 +29,3 @@ export { act } from "@testing-library/react-hooks";
 // override render method
 export { customRender as render };
 export { customRenderHook as renderHook };
-
-// test ids
-export const TestId = {
-  BookCard: "book-card",
-  BookExplorer: "book-explorer",
-};

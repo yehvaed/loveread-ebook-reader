@@ -1,5 +1,6 @@
+import { TestId } from "@consts";
 import axios from "@shared/httpClient";
-import { render, TestId } from "@shared/tests";
+import { render } from "@shared/tests";
 import * as React from "react";
 
 import { BookCard } from "./BookCard";

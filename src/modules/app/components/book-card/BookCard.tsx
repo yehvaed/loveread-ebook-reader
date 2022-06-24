@@ -1,5 +1,5 @@
 import { Text } from "@components/Text";
-import { TestId } from "@shared/tests";
+import { TestId } from "@consts";
 import { BookId } from "@typings";
 import { FC, useCallback } from "react";
 import * as React from "react";

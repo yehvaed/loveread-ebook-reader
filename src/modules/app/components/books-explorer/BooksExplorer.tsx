@@ -1,5 +1,5 @@
 import { BookCard } from "@components/book-card";
-import { TestId } from "@shared/tests";
+import { TestId } from "@consts";
 import * as React from "react";
 import { FC } from "react";
 import { FlatList } from "react-native";

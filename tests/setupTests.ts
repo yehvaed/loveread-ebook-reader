@@ -9,11 +9,11 @@ jest.setTimeout(100000);
 jasmine.getEnv().addReporter(adapter);
 
 beforeAll(async () => {
-  await init(config, { reuse: true });
+  // await init(config, { reuse: true });
 });
 
 beforeEach(async () => {
-  await adapter.beforeEach();
+  // await adapter.beforeEach();
 });
 
 afterAll(async () => {

@@ -4,13 +4,9 @@ import packageJson from "./package.json";
 
 const { version } = packageJson;
 
-export const constants = {
-  isDevelopment: process.env.NODE_ENV === "development",
-};
+export const constants = {};
 
 export default ({ config }: ConfigContext): ExpoConfig => {
-  const { isDevelopment } = constants;
-
   const configuration = {
     ...config,
     packagerOpts: {

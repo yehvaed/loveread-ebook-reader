@@ -3,24 +3,38 @@
     "allowJs": true,
     "esModuleInterop": true,
     "jsx": "react-native",
-    "lib": ["DOM", "ESNext"],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "moduleResolution": "node",
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "typeRoots": ["./node_modules/@types"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./libs"
+    ],
     "strict": true,
     "paths": {
-      "@mockserver/*": ["./src/shared/mocks/*"],
-      "@mockserver": ["./src/shared/mocks"],
-      "@components/*": ["./src/app/components/*"],
-      "@screens/*": ["./src/app/screens/*"],
-      "@tests": [
-        "./src/shared/tests.tsx"
+      "@components/*": [
+        "./src/modules/app/components/*"
       ],
-      "@typings": ["./src/typings.d.ts"],
-      "@consts": ["./src/consts.ts"],
-      "@utils/*": ["./src/app/utils/*"]
+      "@shared/*": [
+        "./src/shared/*"
+      ],
+      "@types/*": [
+        "./src/types/*"
+      ],
+      "@typings": [
+        "./src/typings.d.ts"
+      ],
+      "@consts": [
+        "./src/consts.ts"
+      ],
+      "himalaya": [
+        "./src/types/himalaya"
+      ]
     },
     "types": [
       "jest",

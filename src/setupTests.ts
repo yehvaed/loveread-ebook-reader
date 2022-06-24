@@ -1,8 +1,5 @@
-import { queryClient } from "@utils/query";
-
-import { mockServer } from "./shared/mocks";
+import { mockServer } from "./modules/mockServer";
 
 afterEach(() => {
   mockServer.resetHandlers();
-  queryClient.clear();
 });

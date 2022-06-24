@@ -16,33 +16,25 @@ const aliases = Object.keys(paths).reduce((aliases, key) => {
 module.exports = {
   testEnvironment: "jsdom",
   preset: "jest-expo",
+  testMatch: ["**/?(*.)+(spec|test).ts?(x)"],
+  snapshotResolver: "./snapshot.config.js",
+  moduleFileExtensions: ["js", "ts", "tsx"],
   moduleNameMapper: aliases,
-  globals: {
-    "ts-jest": {
-      tsconfig: {
-        jsx: "react",
-      },
-    },
-  },
+  transformIgnorePatterns: [
+    "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)",
+  ],
   transform: {
     "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
     "^.+\\.tsx?$": "ts-jest",
   },
-  testMatch: ["**/?(*.)+(spec|test).ts?(x)"],
-  coverageThreshold: {
-    global: {
-      lines: 59,
-      statements: 58.71,
-      branches: 50,
-      functions: 58.46,
-    },
-  },
+  coverageReporters: ["json-summary", "text", "lcov"],
   collectCoverageFrom: [
     "**/*.{ts,tsx}",
     // don't collect coverage from e2e tests
     "!**/*.e2e.{ts,tsx}",
     // don't collect coverage from unit tests
-    "!**/*.test.{ts,tsx}",
+    "!**/*.spec.{ts,tsx}",
+    "!**/*.integration.spec.{ts,tsx}",
     "!**/setupTests.ts",
     "!**/index.ts",
     "!**/mocks/{handlers,native}.ts",
@@ -52,11 +44,22 @@ module.exports = {
     "!**/babel.config.js",
     "!**/jest.setup.js",
   ],
-  moduleFileExtensions: ["js", "ts", "tsx"],
-  transformIgnorePatterns: [
-    "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)",
-  ],
-  coverageReporters: ["json-summary", "text", "lcov"],
+  coverageThreshold: {
+    global: {
+      lines: 72.03,
+      statements: 73.15,
+      branches: 56.25,
+      functions: 50.72,
+    },
+  },
+  collectCoverage: true,
+  globals: {
+    "ts-jest": {
+      tsconfig: {
+        jsx: "react",
+      },
+    },
+  },
   setupFilesAfterEnv: [
     "@testing-library/jest-native/extend-expect",
     "<rootDir>/src/setupTests.ts",

@@ -4,10 +4,9 @@
   "main": "src/entry.js",
   "scripts": {
     "format": "prettier --write .",
-    "start": "cross-env NODE_ENV=development expo start",
-    "start:production": "cross-env NODE_ENV=production expo start",
-    "test": "jest --coverage",
-    "e2e": "concurrently --kill-others --success=first \"yarn start --ios --clear 2>/dev/null   \"   \"detox test --loglevel error --cleanup\"",
+    "start": "expo start",
+    "test": "jest",
+    "posttest": "jest-it-up",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -23,6 +22,7 @@
     "expo-status-bar": "~1.2.0",
     "expo-updates": "~0.11.7",
     "iconv-lite": "^0.6.3",
+    "lodash": "^4.17.21",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
@@ -47,6 +47,7 @@
     "@types/iconv-lite": "^0.0.1",
     "@types/jasmine": "^4.0.3",
     "@types/jest": "^26.0.20",
+    "@types/lodash": "^4.14.182",
     "@types/react": "~17.0.21",
     "@types/react-dom": "~17.0.9",
     "@types/react-native": "~0.64.12",

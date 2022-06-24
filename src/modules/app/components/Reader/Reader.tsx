@@ -2,7 +2,7 @@ import { Page } from "@components/page";
 import * as _ from "lodash";
 import * as React from "react";
 import { FC } from "react";
-import { ScrollView } from "react-native";
+import { FlatList as List } from "react-native";
 
 import { usePageCount } from "./usePageCount";
 
@@ -11,17 +11,19 @@ interface ReaderProps {
 }
 
 export const Reader: FC<ReaderProps> = ({ bookId }) => {
-  const range = usePageCount(bookId);
+  const pageNumber = usePageCount(bookId);
 
   return (
-    <ScrollView>
-      {range.map((pageNumber) => (
+    <List
+      renderItem={({ item: pageNumber }) => (
         <Page
           key={`${bookId}-${pageNumber}`}
           bookId={bookId}
           pageNumber={pageNumber}
         />
-      ))}
-    </ScrollView>
+      )}
+      keyExtractor={(pageNumber) => `${bookId}-${pageNumber}`}
+      data={pageNumber}
+    />
   );
 };

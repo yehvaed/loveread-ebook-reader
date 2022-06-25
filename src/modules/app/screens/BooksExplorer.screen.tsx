@@ -1,10 +1,9 @@
+import { BooksExplorer } from "@components/BooksExplorer";
 import { useNavigation } from "@react-navigation/native";
 import { AppNavigationProps } from "@typings";
 import * as _ from "lodash";
 import * as React from "react";
 import { FC, useCallback } from "react";
-
-import { BooksExplorer } from "../components/books-explorer";
 
 export const BooksExplorerScreen: FC = () => {
   const { navigate } = useNavigation<AppNavigationProps>();

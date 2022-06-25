@@ -3,13 +3,13 @@ import { render } from "@shared/tests";
 import * as React from "react";
 import { Text } from "react-native";
 
-import { BookCard } from "../book-card";
+import { BookCard } from "../BookCard";
 import { BooksExplorer } from "./BooksExplorer";
 
 jest.mock("@shared/httpClient");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-jest.mock("@components/book-card");
+jest.mock("@components/BookCard");
 const mockedBookCard = BookCard as jest.MockedFunction<typeof BookCard>;
 
 describe("<BookExplorer/>", () => {

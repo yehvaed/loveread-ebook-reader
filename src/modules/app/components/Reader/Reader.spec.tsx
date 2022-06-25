@@ -3,7 +3,7 @@ import { render, waitFor } from "@shared/tests";
 import * as React from "react";
 import { Text } from "react-native";
 
-import { Page } from "../page";
+import { Page } from "../Page";
 import { Reader } from "./Reader";
 
 jest.mock("@shared/httpClient");
@@ -38,4 +38,10 @@ describe("<Page/>", () => {
     expect(pages).toHaveLength(3);
     pages.forEach((item, i) => expect(item.children[0]).toEqual(`${i + 1}`));
   });
+
+  it.skip("should show header when long press on page", () => {});
+  it.skip("should hide header when start scrolling", () => {});
+  it.skip("should restore progress was saved", () => {});
+  it.skip("should save book progress when click on icon", () => {});
+  it.skip("should save progress continuously when book was saved", () => {});
 });

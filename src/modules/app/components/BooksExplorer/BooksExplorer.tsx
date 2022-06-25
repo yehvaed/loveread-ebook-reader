@@ -1,4 +1,4 @@
-import { BookCard } from "@components/book-card";
+import { BookCard } from "@components/BookCard";
 import { TestId } from "@consts";
 import * as React from "react";
 import { FC } from "react";

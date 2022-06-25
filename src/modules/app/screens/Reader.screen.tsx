@@ -1,4 +1,4 @@
-import { Reader } from "@components/reader";
+import { Reader } from "@components/Reader";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "@typings";
 import * as _ from "lodash";

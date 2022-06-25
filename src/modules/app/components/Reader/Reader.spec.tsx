@@ -1,16 +1,29 @@
+import { TestId } from "@consts";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import axios from "@shared/httpClient";
-import { render, waitFor } from "@shared/tests";
+import { fireEvent, render } from "@shared/tests";
+import { RootStackParamList } from "@typings";
 import * as React from "react";
 import { Text } from "react-native";
 
 import { Page } from "../Page";
+import { SaveBook } from "../SaveBook";
 import { Reader } from "./Reader";
 
 jest.mock("@shared/httpClient");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-jest.mock("@components/page");
+jest.mock("@components/Page");
 const mockedPage = Page as jest.MockedFunction<typeof Page>;
+
+jest.mock("@components/SaveBook");
+const mockedSaveBook = SaveBook as jest.MockedFunction<typeof SaveBook>;
+
+jest.mock("@react-navigation/native");
+const mockUseNavigation = useNavigation as jest.MockedFunction<
+  typeof useNavigation
+>;
 
 describe("<Page/>", () => {
   const renderComponent = () => render(<Reader bookId={0} />);
@@ -20,7 +33,7 @@ describe("<Page/>", () => {
 
   it("should fetch all pages", async () => {
     mockedPage.mockImplementation(({ pageNumber }) => (
-      <Text testID="page">{pageNumber}</Text>
+      <Text testID="test">{pageNumber}</Text>
     ));
 
     mockedAxios.get.mockResolvedValueOnce({
@@ -33,13 +46,13 @@ describe("<Page/>", () => {
     });
 
     const { findAllByTestId } = renderComponent();
-    const pages = await findAllByTestId("page");
+    const pages = await findAllByTestId("test");
 
     expect(pages).toHaveLength(3);
     pages.forEach((item, i) => expect(item.children[0]).toEqual(`${i + 1}`));
   });
 
-  it.skip("should show header when long press on page", () => {});
+  it.skip("should show header when long press on page", async () => {});
   it.skip("should hide header when start scrolling", () => {});
   it.skip("should restore progress was saved", () => {});
   it.skip("should save book progress when click on icon", () => {});

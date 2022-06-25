@@ -1,66 +1,31 @@
 import { Page } from "@components/Page";
-import { SaveBook } from "@components/SaveBook";
-import { useNavigation } from "@react-navigation/native";
+import { TestId } from "@consts";
 import * as _ from "lodash";
 import * as React from "react";
-import { FC, useLayoutEffect, useState } from "react";
-import { FlatList as List, Pressable } from "react-native";
+import { FC } from "react";
+import {
+  FlatList as List,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  Pressable,
+} from "react-native";
 
 import { usePageCount } from "./usePageCount";
 
 interface ReaderProps {
+  onLongPress?: () => void;
+  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
   bookId: number;
 }
 
-interface UseHeaderProps {
-  rightIcon: () => JSX.Element;
-}
-
-const useHeader = ({ rightIcon }: UseHeaderProps, bookId: BookId) => {
-  const [showHeader, setShowHeader] = useState(false);
-  const navigation = useNavigation();
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShadowVisible: false,
-      headerShown: showHeader,
-      headerTitle: "",
-      headerLeft: () => null,
-      headerBackTitle: "",
-      headerRight: rightIcon,
-    });
-  }, [navigation]);
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: showHeader,
-    });
-  }, [navigation, showHeader]);
-
-  return {
-    toggle: () => {
-      setShowHeader(!showHeader);
-    },
-    isVisible: showHeader,
-  };
-};
-
-export const Reader: FC<ReaderProps> = ({ bookId }) => {
+export const Reader: FC<ReaderProps> = ({ bookId, onLongPress, onScroll }) => {
   const pageNumber = usePageCount(bookId);
-  const { toggle } = useHeader(
-    {
-      rightIcon: () => <SaveBook bookId={bookId} />,
-    },
-    bookId
-  );
 
   return (
     <List
-      style={{
-        backgroundColor: "white",
-      }}
+      style={{ backgroundColor: "white" }}
       renderItem={({ item: pageNumber }) => (
-        <Pressable onLongPress={() => toggle()}>
+        <Pressable testID={TestId.Page} onLongPress={onLongPress}>
           <Page
             key={`${bookId}-${pageNumber}`}
             bookId={bookId}
@@ -68,6 +33,9 @@ export const Reader: FC<ReaderProps> = ({ bookId }) => {
           />
         </Pressable>
       )}
+      onScroll={(event) => {
+        onScroll?.(event);
+      }}
       keyExtractor={(pageNumber) => `${bookId}-${pageNumber}`}
       data={pageNumber}
     />

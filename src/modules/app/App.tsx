@@ -6,7 +6,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import { BooksExplorerScreen } from "./screens/BooksExplorer.screen";
-import { ReaderScreen } from "./screens/Reader.screen";
+import { ReaderScreen } from "./screens/Reader/Reader.screen";
 
 export const { Screen, Navigator } =
   createNativeStackNavigator<RootStackParamList>();
@@ -35,7 +35,10 @@ export default function App() {
         <Screen
           name="reader"
           component={ReaderScreen}
-          options={{ headerShown: false, headerBackVisible: false }}
+          options={{
+            headerShown: false,
+            headerBackVisible: false,
+          }}
         />
       </Navigator>
     </Container>

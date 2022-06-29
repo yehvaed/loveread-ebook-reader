@@ -5,4 +5,5 @@ interface Book {
   title: string;
   genre?: string;
   coverUrl?: string;
+  summary?: string;
 }

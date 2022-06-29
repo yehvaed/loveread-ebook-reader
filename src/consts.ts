@@ -6,3 +6,7 @@ export const TestId = {
 };
 
 export const isDevelopment = __DEV__;
+
+export const LOVEREAD_URL = __DEV__
+  ? "http://localhost:9090"
+  : "http://loveread.ec";

@@ -18,10 +18,10 @@
     "strict": true,
     "paths": {
       "@components/*": [
-        "./src/modules/app/components/*"
+        "./src/app/components/*"
       ],
-      "@shared/*": [
-        "./src/shared/*"
+      "@services/*": [
+        "./src/app/services/*"
       ],
       "@types/*": [
         "./src/types/*"

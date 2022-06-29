@@ -1,7 +1,5 @@
 import { NavigationProp } from "@react-navigation/native";
 
-type BookId = number;
-
 export type RootStackParamList = {
   "book-explorer": undefined;
   reader: {
@@ -16,10 +14,3 @@ export type AppNavigationProps = NavigationProp<
 >;
 
 type Nullable<T> = T | null | undefined;
-
-export interface Book {
-  id: BookId;
-  title: string;
-  genre?: string;
-  coverUrl?: string;
-}

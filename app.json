@@ -2,9 +2,9 @@
     "expo": {
         "orientation": "portrait",
         "scheme": "loveread",
-        "icon": "./assets/images/icon.png",
+        "icon": "./src/assets/images/icon.png",
         "splash": {
-            "image": "./assets/images/splash.png",
+            "image": "./src/assets/images/splash.png",
             "resizeMode": "contain",
             "backgroundColor": "#ffffff"
         },
@@ -15,7 +15,9 @@
             "**/*"
         ],
         "packagerOpts": {
-            "assetExts": []
+            "assetExts": [
+                "jpeg"
+            ]
         },
         "ios": {
             "bundleIdentifier": "com.yehvaed.loveread",
@@ -23,12 +25,12 @@
         },
         "android": {
             "adaptiveIcon": {
-                "foregroundImage": "./assets/images/adaptive-icon.png",
+                "foregroundImage": "./src/assets/images/adaptive-icon.png",
                 "backgroundColor": "#FFFFFF"
             }
         },
         "web": {
-            "favicon": "./assets/images/favicon.png"
+            "favicon": "./src/assets/images/favicon.png"
         }
     }
 }

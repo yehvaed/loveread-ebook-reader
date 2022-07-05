@@ -4,7 +4,7 @@
   "main": "src/entry.js",
   "scripts": {
     "format": "prettier --write .",
-    "start": "concurrently 'ts-node-dev src/mocks/mockServer' 'expo start --non-interactive'",
+    "start": "concurrently 'ts-node-dev src/mocks/mockServer' 'expo start --non-interactive --web'",
     "test": "jest",
     "prepare": "husky install",
     "mockServer": "ts-node-dev src/mocks/server"

@@ -37,22 +37,13 @@ module.exports = {
     "!**/*.integration.spec.{ts,tsx}",
     "!**/setupTests.ts",
     "!**/index.ts",
-    "!**/mocks/{handlers,native}.ts",
+    "!**/mocks",
     "!**/app.config.ts",
     "!**/coverage/**",
     "!**/node_modules/**",
     "!**/babel.config.js",
     "!**/jest.setup.js",
   ],
-  coverageThreshold: {
-    global: {
-      lines: 72.57,
-      statements: 73.64,
-      branches: 56.25,
-      functions: 51.42,
-    },
-  },
-  collectCoverage: true,
   globals: {
     "ts-jest": {
       tsconfig: {

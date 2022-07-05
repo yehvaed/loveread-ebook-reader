@@ -6,7 +6,6 @@
     "format": "prettier --write .",
     "start": "concurrently 'ts-node-dev src/mocks/mockServer' 'expo start --non-interactive'",
     "test": "jest",
-    "posttest": "jest-it-up",
     "prepare": "husky install",
     "mockServer": "ts-node-dev src/mocks/server"
   },
@@ -73,7 +72,6 @@
     "jest": "^26.6.3",
     "jest-coverage-badges": "1.1.2",
     "jest-expo": "^44.0.0",
-    "jest-it-up": "^2.0.2",
     "lint-staged": "^12.4.1",
     "msw": "^0.42.3",
     "prettier": "^2.6.2",

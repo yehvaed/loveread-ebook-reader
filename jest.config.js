@@ -24,7 +24,7 @@ module.exports = {
     "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)",
   ],
   transform: {
-    "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+    // "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
     "^.+\\.tsx?$": "ts-jest",
   },
   coverageReporters: ["json-summary", "text", "lcov"],

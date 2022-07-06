@@ -1,4 +1,4 @@
-import axios from "@services/httpClient";
+import { httpClient } from "@shared/httpClient";
 import _ from "lodash";
 import { useMemo } from "react";
 import { useQuery } from "react-query";
@@ -17,7 +17,7 @@ export const usePageCount: usePageCountType = (bookId) => {
   const { data: firstPage } = useQuery(
     ["book", bookId, "page", 1],
     async () => {
-      const { data: page } = await axios.get<string>(
+      const { data: page } = await httpClient.get<string>(
         `/read_book.php?id=${bookId}&p=1`
       );
 

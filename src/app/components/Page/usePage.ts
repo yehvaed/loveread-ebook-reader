@@ -1,4 +1,4 @@
-import axios from "@services/httpClient";
+import { httpClient } from "@shared/httpClient";
 import { useMemo } from "react";
 import { useQuery } from "react-query";
 
@@ -8,7 +8,7 @@ export const usePage: UseBookStoreType = (bookId, page) => {
   const { data: bookPage } = useQuery(
     ["book", bookId, "page", page],
     async () => {
-      const { data: bookPage } = await axios.get<string>(
+      const { data: bookPage } = await httpClient.get<string>(
         `/read_book.php?id=${bookId}&p=${page}`
       );
 

@@ -1,12 +1,12 @@
 import { TestId } from "@consts";
-import axios from "@services/httpClient";
+import { httpClient } from "@shared/httpClient";
 import * as React from "react";
 
-import { render } from "../../../utils/tests";
+import { render } from "../../../tools/tests";
 import { BookCard } from "./BookCard";
 
-jest.mock("@services/httpClient");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+jest.mock("@shared/httpClient");
+const mockedAxios = httpClient as jest.Mocked<typeof httpClient>;
 
 describe("<BookCard/>", () => {
   const renderComponent = () => render(<BookCard id={0} />);

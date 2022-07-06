@@ -1,18 +1,15 @@
-import { TestId } from "@consts";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import axios from "@services/httpClient";
-import { RootStackParamList } from "@typings";
+import { useNavigation } from "@react-navigation/native";
+import { httpClient } from "@shared/httpClient";
 import * as React from "react";
 import { Text } from "react-native";
 
-import { fireEvent, render } from "../../../utils/tests";
+import { render } from "../../../tools/tests";
 import { Page } from "../Page";
 import { SaveBook } from "../SaveBook";
 import { Reader } from "./Reader";
 
-jest.mock("@services/httpClient");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+jest.mock("@shared/httpClient");
+const mockedAxios = httpClient as jest.Mocked<typeof httpClient>;
 
 jest.mock("@components/Page");
 const mockedPage = Page as jest.MockedFunction<typeof Page>;

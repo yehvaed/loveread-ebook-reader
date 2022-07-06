@@ -1,11 +1,11 @@
-import axios from "@services/httpClient";
+import { httpClient } from "@shared/httpClient";
 import * as React from "react";
 
-import { render, waitFor } from "../../../utils/tests";
+import { render, waitFor } from "../../../tools/tests";
 import { Page } from "./Page";
 
-jest.mock("@services/httpClient");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+jest.mock("@shared/httpClient");
+const mockedAxios = httpClient as jest.Mocked<typeof httpClient>;
 
 describe("<Page/>", () => {
   const renderComponent = () => render(<Page bookId={0} pageNumber={0} />);

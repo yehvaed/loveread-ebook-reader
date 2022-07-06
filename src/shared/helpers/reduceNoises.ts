@@ -1,6 +1,4 @@
-import { AxiosResponse } from "axios";
-
-export function normalise(s: string) {
+export function reduceNoises(s: string) {
   return s
     .replace(/[\t]+/g, " ")
     .replaceAll("&#8205;", "")
@@ -17,8 +15,3 @@ export function normalise(s: string) {
     .replace(/(\r\n|\n|\r)/gm, " ")
     .replace(/[ ]+/g, " ");
 }
-
-export const onResponse = (response: AxiosResponse) => {
-  response.data = normalise(response.data);
-  return response;
-};

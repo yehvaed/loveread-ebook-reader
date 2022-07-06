@@ -1,15 +1,4 @@
-import axios from "@services/httpClient";
-import * as React from "react";
-
-import { render } from "../utils/tests";
-import App from "./App";
-
-jest.mock("@services/httpClient");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
-
 describe("<App/>", () => {
-  const renderScreen = () => render(<App />);
-
   describe("explore mode", () => {
     it.skip("should load more book when scrolled down", () => {});
     it.skip("should refresh page when pulled up", () => {});

@@ -26,6 +26,12 @@
       "@types/*": [
         "./src/types/*"
       ],
+      "@shared/*": [
+        "./src/shared/*"
+      ],
+      "@tools/*": [
+        "./src/tools/*"
+      ],
       "@typings": [
         "./src/typings.d.ts"
       ],
@@ -33,7 +39,7 @@
         "./src/consts.ts"
       ],
       "himalaya": [
-        "./src/types/himalaya"
+        "src/@types/himalaya"
       ]
     },
     "types": [

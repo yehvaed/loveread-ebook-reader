@@ -16,6 +16,7 @@ module.exports = function (api) {
   return {
     presets: ["babel-preset-expo"],
     plugins: [
+      "transform-html-import-to-string",
       [
         "module-resolver",
         {

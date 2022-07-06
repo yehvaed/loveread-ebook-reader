@@ -1,11 +1,8 @@
-import axios from "@services/httpClient";
+import { httpClient } from "@shared/httpClient";
 import * as React from "react";
 
-import { render } from "../../../utils/tests";
+import { render } from "../../../tools/tests";
 import { SaveBook } from "./SaveBook";
-
-jest.mock("@services/httpClient");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe("<SaveBook/>", () => {
   const renderComponent = () => render(<SaveBook bookId={0} />);

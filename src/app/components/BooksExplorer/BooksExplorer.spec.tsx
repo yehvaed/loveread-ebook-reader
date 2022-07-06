@@ -1,13 +1,13 @@
-import axios from "@services/httpClient";
+import { httpClient } from "@shared/httpClient";
 import * as React from "react";
 import { Text } from "react-native";
 
-import { render } from "../../../utils/tests";
+import { render } from "../../../tools/tests";
 import { BookCard } from "../BookCard";
 import { BooksExplorer } from "./BooksExplorer";
 
-jest.mock("@services/httpClient");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+jest.mock("@shared/httpClient");
+const mockedAxios = httpClient as jest.Mocked<typeof httpClient>;
 
 jest.mock("@components/BookCard");
 const mockedBookCard = BookCard as jest.MockedFunction<typeof BookCard>;

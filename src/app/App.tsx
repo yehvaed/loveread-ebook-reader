@@ -23,7 +23,7 @@ const Container: FC = ({ children }) => {
   );
 };
 
-export default function App() {
+export function App() {
   return (
     <Container>
       <Navigator>

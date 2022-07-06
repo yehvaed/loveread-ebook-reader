@@ -133,8 +133,3 @@ export function convertWindows1252toUTF16(s: string) {
     s
   );
 }
-
-export const onResponse = (response: AxiosResponse) => {
-  response.data = convertWindows1252toUTF16(response.data);
-  return response;
-};

@@ -1,5 +1,5 @@
 import { LOVEREAD_URL } from "@consts";
-import axios from "@services/httpClient";
+import { httpClient } from "@shared/httpClient";
 import { useMemo } from "react";
 import { useQuery } from "react-query";
 
@@ -7,7 +7,7 @@ type UseBookMetadataType = (bookId: BookId) => Nullable<Book>;
 
 export const useBookMetadata: UseBookMetadataType = (bookId) => {
   const { data } = useQuery(["book", bookId, "page", 0], () => {
-    return axios.get<string>(`/view_global.php?id=${bookId}`);
+    return httpClient.get<string>(`/view_global.php?id=${bookId}`);
   });
 
   const details = useMemo(() => {

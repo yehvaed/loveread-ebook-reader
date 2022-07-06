@@ -1,9 +1,7 @@
+import { httpClient } from "@shared/httpClient";
 import _ from "lodash";
 import { useMemo } from "react";
 import { useInfiniteQuery } from "react-query";
-
-// eslint-disable-next-line import/order
-import axios from "@services/httpClient";
 
 interface UseBookStoreReturnType {
   books: Book["id"][];
@@ -36,7 +34,7 @@ export const useBookStore: UseBookStoreType = () => {
     useInfiniteQuery<BooksStoreQueryResult>(
       "books-explorer-list",
       async ({ pageParam = "index_book.php?id_genre=1" }) => {
-        const { data: page } = await axios.get<string>(`/${pageParam}`);
+        const { data: page } = await httpClient.get<string>(`/${pageParam}`);
 
         const ids = getIdsFromPage(page);
         const nextPage = getNextPage(page);

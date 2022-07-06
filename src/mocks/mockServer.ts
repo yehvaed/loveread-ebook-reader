@@ -1,7 +1,14 @@
-import { createServer } from "@mswjs/http-middleware";
+import { httpClient } from "@shared/httpClient";
+import AxiosMockAdapter from "axios-mock-adapter";
 
 import { handlers } from "./handlers";
 
-const httpServer = createServer(...handlers);
+export const start = () => {
+  const mock = new AxiosMockAdapter(httpClient);
 
-httpServer.listen(9090);
+  const registerHandler = (handler: any) => {
+    handler(mock);
+  };
+
+  handlers.forEach(registerHandler);
+};
